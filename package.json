@@ -1,0 +1,18 @@
+{
+  "name": "paas",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mindo21/paas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mindo21/paas/issues"
+  },
+  "homepage": "https://github.com/Mindo21/paas#readme"
+}

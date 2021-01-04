@@ -22,6 +22,11 @@ module.exports.get = async (id) => {
   return '';
 };
 
+module.exports.delete = async (id) => {
+  // asynchronously delete the entity
+  await ds.delete(key(id));
+};
+
 module.exports.put = async (id, val) => {
   const entity = {
     key: key(id),

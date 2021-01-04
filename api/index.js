@@ -23,6 +23,16 @@ api.get('/:id(\\w+)', async (req, res) => {
   }
 });
 
+api.delete('/:id(\\w+)', async (req, res) => {
+  try {
+    await db.delete(req.params.id);
+    res.sendStatus(204);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  }
+});
+
 api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     await db.put(req.params.id, req.body);
