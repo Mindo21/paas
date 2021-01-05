@@ -14,5 +14,9 @@
   "bugs": {
     "url": "https://github.com/Mindo21/paas/issues"
   },
-  "homepage": "https://github.com/Mindo21/paas#readme"
+  "homepage": "https://github.com/Mindo21/paas#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
 }

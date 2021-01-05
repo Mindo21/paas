@@ -1,2 +1,4 @@
-# ignore all node_modules
+# ignore unnecessary npm files
 /node_modules
+
+package-lock.json

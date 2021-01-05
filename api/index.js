@@ -4,6 +4,13 @@ const api = express.Router();
 module.exports = api;
 
 const db = require(`./db-datastore`);
+// const db = require(`./db-inmemory`);
+
+api.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
 
 api.get('/', async (req, res) => {
   try {
@@ -23,19 +30,27 @@ api.get('/:id(\\w+)', async (req, res) => {
   }
 });
 
-api.delete('/:id(\\w+)', async (req, res) => {
+api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
-    await db.delete(req.params.id);
-    res.sendStatus(204);
+    res.send(await db.put(req.params.id, req.body));
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
   }
 });
 
-api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
+api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
-    await db.put(req.params.id, req.body);
+    res.send(await db.post(req.params.id, req.body));
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  }
+});
+
+api.delete('/:id(\\w+)', async (req, res) => {
+  try {
+    await db.delete(req.params.id);
     res.sendStatus(204);
   } catch (e) {
     console.error(e);
