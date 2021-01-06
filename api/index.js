@@ -32,6 +32,7 @@ api.get('/:id(\\w+)', async (req, res) => {
 
 api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
+    console.log("starting");
     res.send(await db.put(req.params.id, req.body));
   } catch (e) {
     console.error(e);
