@@ -3,8 +3,11 @@ const bodyParser = require('body-parser');
 const api = express.Router();
 module.exports = api;
 
-const db = require(`./db-datastore`);
+// i used the inmemory database model first,
+// to check that everything is working on my side
+
 // const db = require(`./db-inmemory`);
+const db = require(`./db-datastore`);
 
 api.use((req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
@@ -12,15 +15,7 @@ api.use((req, res, next) => {
   next();
 });
 
-api.get('/', async (req, res) => {
-  try {
-    res.json(await db.list());
-  } catch (e) {
-    console.error(e);
-    res.sendStatus(500);
-  }
-});
-
+// GET - returns value as a string
 api.get('/:id(\\w+)', async (req, res) => {
   try {
     res.send(await db.get(req.params.id));
@@ -30,6 +25,7 @@ api.get('/:id(\\w+)', async (req, res) => {
   }
 });
 
+// PUT - returns value as a string
 api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     res.send(await db.put(req.params.id, req.body));
@@ -39,6 +35,7 @@ api.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
+// POST - returns value as a string
 api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     res.send(await db.post(req.params.id, req.body));
@@ -48,6 +45,7 @@ api.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
+// DELETE - returns status code only
 api.delete('/:id(\\w+)', async (req, res) => {
   try {
     await db.delete(req.params.id);
