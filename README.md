@@ -9,8 +9,8 @@ Hello.
 4. Deploy the app.
 
 ```sh
-  git clone https://github.com/Mindo21/paas.git
-  cd paas/
-  npm install
-  gcloud app deploy
+git clone https://github.com/Mindo21/paas.git
+cd paas/
+npm install
+gcloud app deploy
 ```
