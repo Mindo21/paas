@@ -7,14 +7,6 @@ function key(id) {
   return ds.key([kind, id]);
 }
 
-// module.exports.list = async () => {
-//   // asynchronously get a list of entities with names
-//   let [data] = await ds.createQuery(kind).select('name').order('name').run();
-//   // extract only the names
-//   data = data.map((val) => val.name);
-//   return data;
-// };
-
 module.exports.get = async (id) => {
   const [data] = await ds.get(key(id));
   if (data && data.val) return data.val;
@@ -26,21 +18,20 @@ module.exports.put = async (id, val) => {
     key: key(id),
     data: { name: id, val },
   }
-  console.log("before entity: ", entity);
   await ds.save(entity);
-  console.log("just saved entity: ", entity);
-  return val.toString();
+  return val;
 };
 
 module.exports.post = async (id, val) => {
   const [data] = await ds.get(key(id));
   if (data && data.val) {
+    const newVal = (parseInt(data.val) + parseInt(val)).toString();
     const entity = {
       key: key(id),
-      data: { name: id, val: data.val + val },
+      data: { name: id, val: newVal },
     }
     await ds.save(entity);
-    return (data.val + val);
+    return newVal;
   } else {
     const entity = {
       key: key(id),
