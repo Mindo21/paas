@@ -4,7 +4,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "build-start": "cd static/ && npm run build && cd .. && npm start"
+    "build-start": "cd static/ && npm run build && cd .. && npm start",
+    "install-build": "cd static/ && npm i && npm run build && cd .. && npm i",
+    "install-build-start": "npm run install-build && npm start"
   },
   "repository": {
     "type": "git",

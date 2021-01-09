@@ -1,7 +1,7 @@
-# paas
+# paas-react
 Hello.
 
-## How to deploy this gcloud service
+## How to deploy this gcloud service with react front-end
 
 1. Clone this repository into your gcloud console terminal.
 2. Open the repo.
@@ -11,6 +11,6 @@ Hello.
 ```sh
 git clone https://github.com/Mindo21/paas.git
 cd paas/
-npm install
+npm install-build
 gcloud app deploy
 ```
