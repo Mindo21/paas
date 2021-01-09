@@ -1,0 +1,13 @@
+.Counter {
+  margin: 0;
+  padding: 0.6em 2em;
+}
+
+.samewidth {
+  display: inline-block;
+  width: 20em;
+}
+
+input, button {
+  margin: 0 0.3em;
+}

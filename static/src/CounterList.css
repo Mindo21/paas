@@ -1,0 +1,13 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+}
+
+ul>li:nth-child(odd){
+  background-color: #ddd;
+}
