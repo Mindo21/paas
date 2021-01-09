@@ -11,6 +11,6 @@ Hello.
 ```sh
 git clone https://github.com/Mindo21/paas.git
 cd paas/
-npm install-build
+npm build
 gcloud app deploy
 ```
